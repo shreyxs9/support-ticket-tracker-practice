@@ -84,8 +84,7 @@ function getVisibleTickets() {
     selectedPriority === "All" || ticket.priority === selectedPriority;
 
   return matchesSearch && matchesStatus && matchesPriority;
-});
-  return tickets;
+  });
 }
 
 function createTicket(ticketData) {
