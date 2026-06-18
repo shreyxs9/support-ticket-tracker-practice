@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support Ticket Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="toolbar" aria-labelledby="app-title">
+        <div>
+          <p class="eyebrow">Collaboration Practice</p>
+          <h1 id="app-title">Support Ticket Tracker</h1>
+        </div>
+        <div class="summary-grid" aria-label="Ticket summary">
+          <div class="summary-card">
+            <span>Total</span>
+            <strong id="total-count">0</strong>
+          </div>
+          <div class="summary-card">
+            <span>Open</span>
+            <strong id="open-count">0</strong>
+          </div>
+          <div class="summary-card">
+            <span>In Progress</span>
+            <strong id="progress-count">0</strong>
+          </div>
+          <div class="summary-card">
+            <span>Resolved</span>
+            <strong id="resolved-count">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form class="ticket-form" id="ticket-form">
+          <h2>Create Ticket</h2>
+
+          <label for="ticket-title">Title</label>
+          <input id="ticket-title" name="title" type="text" placeholder="Example: Login button not working" />
+
+          <label for="ticket-description">Description</label>
+          <textarea
+            id="ticket-description"
+            name="description"
+            rows="5"
+            placeholder="Describe the issue or request"
+          ></textarea>
+
+          <div class="field-row">
+            <div>
+              <label for="ticket-priority">Priority</label>
+              <select id="ticket-priority" name="priority">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="ticket-category">Category</label>
+              <select id="ticket-category" name="category">
+                <option value="Bug">Bug</option>
+                <option value="Feature Request">Feature Request</option>
+                <option value="Support">Support</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+
+          <button class="primary-button" type="submit">Create Ticket</button>
+        </form>
+
+        <section class="ticket-section" aria-label="Tickets">
+          <div class="controls">
+            <label class="search-label" for="ticket-search">Search</label>
+            <input id="ticket-search" type="search" placeholder="Search by title" />
+
+            <label for="status-filter">Status</label>
+            <select id="status-filter">
+              <option value="all">All</option>
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+
+            <label for="priority-filter">Priority</label>
+            <select id="priority-filter">
+              <option value="all">All</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <ul class="ticket-list" id="ticket-list" aria-label="Ticket list">
+            <li class="empty-state">No tickets yet.</li>
+          </ul>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
