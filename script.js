@@ -69,23 +69,22 @@ function renderTickets() {
 
 function getVisibleTickets() {
   return tickets.filter((ticket) => {
-  const searchTerm = searchInput.value.toLowerCase().trim();
-  const selectedStatus = statusFilter.value;
-  const selectedPriority = priorityFilter.value;
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    const selectedStatus = statusFilter.value;
+    const selectedPriority = priorityFilter.value;
 
-  const matchesSearch =
-    ticket.title.toLowerCase().includes(searchTerm) ||
-    ticket.description.toLowerCase().includes(searchTerm);
+    const matchesSearch =
+      ticket.title.toLowerCase().includes(searchTerm) ||
+      ticket.description.toLowerCase().includes(searchTerm);
 
-  const matchesStatus =
-    selectedStatus === "All" || ticket.status === selectedStatus;
+    const matchesStatus =
+      selectedStatus === "All" || ticket.status === selectedStatus;
 
-  const matchesPriority =
-    selectedPriority === "All" || ticket.priority === selectedPriority;
+    const matchesPriority =
+      selectedPriority === "All" || ticket.priority === selectedPriority;
 
-  return matchesSearch && matchesStatus && matchesPriority;
-});
-  return tickets;
+    return matchesSearch && matchesStatus && matchesPriority;
+  });
 }
 
 function createTicket(ticketData) {
