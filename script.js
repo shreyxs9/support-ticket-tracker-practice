@@ -69,6 +69,12 @@ function renderTickets() {
 
 function getVisibleTickets() {
   // Intern 2: apply search, status filter, and priority filter here.
+
+
+  drydghf 
+
+  mchcc
+  jvgj
   return tickets;
 }
 
