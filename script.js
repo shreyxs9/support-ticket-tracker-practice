@@ -118,7 +118,7 @@ function editTicket(ticketId) {
 }
 
 function deleteTicket(ticketId) {
-  // Intern 2: remove the ticket from tickets.
+  tickets = tickets.filter((ticket) => ticket.id !== ticketId);
 }
 
 function moveTicketToNextStatus(ticketId) {
