@@ -113,8 +113,38 @@ function createTicket(ticketData) {
   return true;
 }
 
-function editTicket(ticketId) {
-  // Intern 1: allow the user to edit title, description, priority, and category.
+
+  function editTicket(ticketId) {
+  const ticket = tickets.find((t) => t.id === ticketId);
+
+  if (!ticket) return;
+
+  const newTitle = prompt("Edit title:", ticket.title);
+  if (newTitle === null || !newTitle.trim()) return;
+
+  const newDescription = prompt(
+    "Edit description:",
+    ticket.description
+  );
+  if (newDescription === null || !newDescription.trim()) return;
+
+  const newPriority = prompt(
+    "Edit priority (Low, Medium, High):",
+    ticket.priority
+  );
+  if (newPriority === null || !newPriority.trim()) return;
+
+  const newCategory = prompt(
+    "Edit category:",
+    ticket.category
+  );
+  if (newCategory === null || !newCategory.trim()) return;
+
+  ticket.title = newTitle.trim();
+  ticket.description = newDescription.trim();
+  ticket.priority = newPriority.trim();
+  ticket.category = newCategory.trim();
+
 }
 
 function deleteTicket(ticketId) {
