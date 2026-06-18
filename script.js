@@ -122,8 +122,19 @@ function deleteTicket(ticketId) {
 }
 
 function moveTicketToNextStatus(ticketId) {
-  // Intern 2: change status from Open -> In Progress -> Resolved -> Open.
+const ticket = tickets.find((ticket) => ticket.id === ticketId);
+
+if (!ticket) {
+  return;
 }
+
+if (ticket.status === "Open") {
+  ticket.status = "In Progress";
+} else if (ticket.status === "In Progress") {
+  ticket.status = "Resolved";
+} else {
+  ticket.status = "Open";
+}}
 
 function updateSummary() {
   // Intern 1: update total, open, in progress, and resolved counts.
