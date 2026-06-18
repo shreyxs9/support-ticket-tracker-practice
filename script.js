@@ -68,12 +68,37 @@ function renderTickets() {
 }
 
 function getVisibleTickets() {
-  // Intern 2: apply search, status filter, and priority filter here.
+  return tickets.filter((ticket) => {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  const selectedStatus = statusFilter.value;
+  const selectedPriority = priorityFilter.value;
+
+  const matchesSearch =
+    ticket.title.toLowerCase().includes(searchTerm) ||
+    ticket.description.toLowerCase().includes(searchTerm);
+
+  const matchesStatus =
+    selectedStatus === "All" || ticket.status === selectedStatus;
+
+  const matchesPriority =
+    selectedPriority === "All" || ticket.priority === selectedPriority;
+
+  return matchesSearch && matchesStatus && matchesPriority;
+});
   return tickets;
 }
 
 function createTicket(ticketData) {
-  // Intern 1: create a ticket object and add it to tickets.
+  const ticket = {
+    id: Date.now(),
+    title: ticketData.title,
+    description: ticketData.description,
+    priority: ticketData.priority,
+    category: ticketData.category,
+    status: "Open",
+  };
+
+  tickets.push(ticket);
 }
 
   function validateTicket(ticketData) {
@@ -169,3 +194,4 @@ priorityFilter.addEventListener("change", renderTickets);
 
 loadTickets();
 renderTickets();
+`
