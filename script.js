@@ -174,13 +174,24 @@ function updateSummary() {
   resolvedCount.textContent = "0";
 }
 
-function saveTickets() {
-  // Intern 1: save tickets to localStorage.
+
+  function saveTickets() {
+  localStorage.setItem(
+    "tickets",
+    JSON.stringify(tickets)
+  );
+
 }
 
-function loadTickets() {
-  // Intern 1: load tickets from localStorage.
+
+  function loadTickets() {
+  const storedTickets = localStorage.getItem("tickets");
+
+  if (storedTickets) {
+    tickets = JSON.parse(storedTickets);
+  }
 }
+
 
 ticketForm.addEventListener("submit", (event) => {
   event.preventDefault();
