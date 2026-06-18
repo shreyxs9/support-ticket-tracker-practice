@@ -106,33 +106,93 @@ function validateTicket(ticketData) {
   return true;
 }
 
-function editTicket(ticketId) {
-  // Intern 1: allow the user to edit title, description, priority, and category.
+
+  function editTicket(ticketId) {
+  const ticket = tickets.find((t) => t.id === ticketId);
+
+  if (!ticket) return;
+
+  const newTitle = prompt("Edit title:", ticket.title);
+  if (newTitle === null || !newTitle.trim()) return;
+
+  const newDescription = prompt(
+    "Edit description:",
+    ticket.description
+  );
+  if (newDescription === null || !newDescription.trim()) return;
+
+  const newPriority = prompt(
+    "Edit priority (Low, Medium, High):",
+    ticket.priority
+  );
+  if (newPriority === null || !newPriority.trim()) return;
+
+  const newCategory = prompt(
+    "Edit category:",
+    ticket.category
+  );
+  if (newCategory === null || !newCategory.trim()) return;
+
+  ticket.title = newTitle.trim();
+  ticket.description = newDescription.trim();
+  ticket.priority = newPriority.trim();
+  ticket.category = newCategory.trim();
+
 }
 
 function deleteTicket(ticketId) {
-  // Intern 2: remove the ticket from tickets.
+  tickets = tickets.filter((ticket) => ticket.id !== ticketId);
 }
 
 function moveTicketToNextStatus(ticketId) {
-  // Intern 2: change status from Open -> In Progress -> Resolved -> Open.
+const ticket = tickets.find((ticket) => ticket.id === ticketId);
+
+if (!ticket) {
+  return;
 }
+
+if (ticket.status === "Open") {
+  ticket.status = "In Progress";
+} else if (ticket.status === "In Progress") {
+  ticket.status = "Resolved";
+} else {
+  ticket.status = "Open";
+}}
 
 function updateSummary() {
-  // Intern 1: update total, open, in progress, and resolved counts.
   totalCount.textContent = tickets.length;
-  openCount.textContent = "0";
-  progressCount.textContent = "0";
-  resolvedCount.textContent = "0";
+
+  openCount.textContent = tickets.filter(
+    (ticket) => ticket.status === "Open"
+  ).length;
+
+  progressCount.textContent = tickets.filter(
+    (ticket) => ticket.status === "In Progress"
+  ).length;
+
+  resolvedCount.textContent = tickets.filter(
+    (ticket) => ticket.status === "Resolved"
+  ).length;
 }
 
-function saveTickets() {
-  // Intern 1: save tickets to localStorage.
+
+  function saveTickets() {
+  localStorage.setItem(
+    "tickets",
+    JSON.stringify(tickets)
+  );
+
 }
 
-function loadTickets() {
-  // Intern 1: load tickets from localStorage.
+
+  function loadTickets() {
+  const storedTickets = localStorage.getItem("tickets");
+
+  if (storedTickets) {
+    tickets = JSON.parse(storedTickets);
+  }
 }
+
 
 ticketForm.addEventListener("submit", (event) => {
   event.preventDefault();
