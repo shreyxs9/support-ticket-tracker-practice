@@ -254,4 +254,4 @@ priorityFilter.addEventListener("change", renderTickets);
 
 loadTickets();
 renderTickets();
-`
+
