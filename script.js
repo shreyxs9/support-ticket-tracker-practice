@@ -101,9 +101,15 @@ function createTicket(ticketData) {
   tickets.push(ticket);
 }
 
+  function validateTicket(ticketData) {
+  if (!ticketData.title || !ticketData.description) {
+    formMessage.textContent =
+      "Title and description cannot be empty.";
+    return false;
+  }
 
-function validateTicket(ticketData) {
-  // Intern 1: prevent empty title and description.
+  formMessage.textContent = "";
+
   return true;
 }
 
