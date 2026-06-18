@@ -73,8 +73,18 @@ function getVisibleTickets() {
 }
 
 function createTicket(ticketData) {
-  // Intern 1: create a ticket object and add it to tickets.
+  const ticket = {
+    id: Date.now(),
+    title: ticketData.title,
+    description: ticketData.description,
+    priority: ticketData.priority,
+    category: ticketData.category,
+    status: "Open",
+  };
+
+  tickets.push(ticket);
 }
+
 
 function validateTicket(ticketData) {
   // Intern 1: prevent empty title and description.
@@ -162,3 +172,4 @@ priorityFilter.addEventListener("change", renderTickets);
 
 loadTickets();
 renderTickets();
+`
