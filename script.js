@@ -126,11 +126,19 @@ function moveTicketToNextStatus(ticketId) {
 }
 
 function updateSummary() {
-  // Intern 1: update total, open, in progress, and resolved counts.
   totalCount.textContent = tickets.length;
-  openCount.textContent = "0";
-  progressCount.textContent = "0";
-  resolvedCount.textContent = "0";
+
+  openCount.textContent = tickets.filter(
+    (ticket) => ticket.status === "Open"
+  ).length;
+
+  progressCount.textContent = tickets.filter(
+    (ticket) => ticket.status === "In Progress"
+  ).length;
+
+  resolvedCount.textContent = tickets.filter(
+    (ticket) => ticket.status === "Resolved"
+  ).length;
 }
 
 function saveTickets() {
