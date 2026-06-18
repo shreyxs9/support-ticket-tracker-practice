@@ -76,8 +76,15 @@ function createTicket(ticketData) {
   // Intern 1: create a ticket object and add it to tickets.
 }
 
-function validateTicket(ticketData) {
-  // Intern 1: prevent empty title and description.
+  function validateTicket(ticketData) {
+  if (!ticketData.title || !ticketData.description) {
+    formMessage.textContent =
+      "Title and description cannot be empty.";
+    return false;
+  }
+
+  formMessage.textContent = "";
+
   return true;
 }
 
